@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\CommentModel;
 use App\Models\PostModel;
 use App\Models\UserModel;
 
@@ -10,17 +11,26 @@ class PostController extends BaseController
 {
     public $userModel;
     public $postModel;
+    public $komenModel;
     public function __construct(){
         $this->userModel = new UserModel();
         $this->postModel = new PostModel();
+        $this->komenModel = new CommentModel();
     }
 
     public function index(){
        
         $posting = $this->postModel->getMyPost();
+
+        foreach ($posting as &$post) {
+            $commentCount = $this->komenModel->countCommentsByPost($post['postid']);
+            $post['comment_count'] = $commentCount;
+        }
+        
         $data = [
             // 'pengguna' => $pengguna,
             'postingan' => $posting,
+
         ];
             // dd($data);
             return view('myPost', $data);

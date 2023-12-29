@@ -8,16 +8,22 @@ use DateTime;
 class CommentModel extends Model 
 {
 
+    
+
     public function getCommentsByPostId($postId)
     {
-        return $this->where('post_id', $postId)->findAll();
+        return $this->select('comment.id as cid, comment.user_id, comment.post_id, comment.comment, users.id, users.username')
+        ->join('users', 'users.id = comment.user_id')
+        ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+        ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+        ->where('post_id', $postId)->findAll();
     }
 
     public function countCommentsByPost($postId)
 {
     return $this->where('post_id', $postId)->countAllResults();
 }
-
+ 
     protected $table            = 'comment';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;

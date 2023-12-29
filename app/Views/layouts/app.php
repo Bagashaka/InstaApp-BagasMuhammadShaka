@@ -16,13 +16,13 @@
           <?=user()->username?>
 	        <ul class="list-unstyled components mb-5">
 	          <li>
-	              <a href="#">Profile </a>
+	              <a href="<?=base_url('/')?>">Home </a>
 	          </li>
             <li>
 	              <a href="<?=base_url('/pos/create')?>">Post</a>
 	          </li>
 	          <li>
-	              <a href="#">Setting</a>
+	              <a href="#">Profile</a>
 	          </li>
 	          <li>
 	              <a href="<?=base_url('logout')?>">Logout</a>

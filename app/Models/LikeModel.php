@@ -7,6 +7,7 @@ use DateTime;
 
 class LikeModel extends Model
 {
+    
 
     public function countLikesByPostAndUser($postId, $userId)
     {
