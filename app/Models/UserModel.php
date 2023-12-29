@@ -12,12 +12,26 @@ use Myth\Auth\Entities\User;
  */
 class UserModel extends Model
 {
+
+    public function getUsers($id = null){
+        if($id != null){
+            return $this->select('users.*')
+            ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+            ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+            ->find($id);
+        }
+        return $this->select('users.*')
+            ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+            ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+            ->findAll();
+    }
+
     protected $table          = 'users';
     protected $primaryKey     = 'id';
     protected $returnType     = 'App\Entities\User';
     protected $useSoftDeletes = true;
     protected $allowedFields  = [
-        'email', 'username', 'password_hash', 'reset_hash', 'reset_at', 'reset_expires', 'activate_hash',
+        'email', 'username', 'name','user_image','password_hash', 'reset_hash', 'reset_at', 'reset_expires', 'activate_hash',
         'status', 'status_message', 'active', 'force_pass_reset', 'permissions', 'deleted_at',
     ];
     protected $useTimestamps   = true;

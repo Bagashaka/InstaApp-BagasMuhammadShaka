@@ -1,40 +1,24 @@
 <?php
 
 namespace App\Controllers;
-use CodeIgniter\Controller;
-use CodeIgniter\Session\Session;
-use Myth\Auth\Config\Auth as AuthConfig;
-use Myth\Auth\Entities\User;
-use Myth\Auth\Models\UserModel;
+
+use App\Models\UserModel;
 
 class Home extends BaseController
 {
 
-    protected $auth;
+public $userModel;
 
-    /**
-    
-     */
-    protected $config;
-
-    /**
-     * 
-     */
-    protected $session;
-
-    public function __construct()
-    {
-        // Most services in this controller require
-        // the session to be started - so fire it up!
-        $this->session = service('session');
-
-        $this->config = config('Auth');
-        $this->auth   = service('authentication');
-    }
+public function __construct(){
+    $this->userModel = new UserModel();
+}
     public function index(): string
-    {            
+    {        $pengguna = $this->userModel->getUsers();
+        $data = [
+            'pengguna' => $pengguna,
+        ];
             // dd($data);
-            return view('home');
+            return view('home', $data);
         
     }
 }

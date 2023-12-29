@@ -1,50 +1,77 @@
 <!doctype html>
 <html lang="en">
-<head>
+  <head>
+  	<title>Insta App</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://unpkg.com/tailwindcss@1.0.4/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
-    <div class="w-full flex flex-row flex-wrap">
-  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
-  .round {
-    border-radius: 50%;
-  }
-</style>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../aset/css/style.css">
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="p-4 pt-5">
+          <img  class="img logo rounded-circle mb-5" src="<?=user()->user_image?>" alt="">
+          <p><?=user()->name?></p>
+	        <ul class="list-unstyled components mb-5">
+	          <li>
+	              <a href="#">Profile</a>
+	          </li>
+	          <li>
+	              <a href="#">Setting</a>
+	          </li>
+	          <li>
+	              <a href="<?=base_url('logout')?>">Logout</a>
+	          </li>
+	        </ul>
+	        <div class="footer">
+	        	<p>
+						  Copyright &copy; All rights reserved <i class="icon-heart" aria-hidden="true"></i> by <a href="https://www.linkedin.com/in/bagashaka/" target="_blank">Bagashaka</a>
+						 </p>
+	        </div>
+	      </div>
+    	</nav>
 
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5">
 
-<div class="w-full bg-indigo-100 h-screen flex flex-row flex-wrap justify-center ">
-  
-  <!-- Begin Navbar -->
-  
-  <div class="bg-white shadow-lg border-t-4 border-indigo-500 absolute bottom-0 w-full md:w-0 md:hidden flex flex-row flex-wrap">
-    <div class="w-full text-right"><button class="p-2 fa fa-bars text-4xl text-gray-600"></button></div>
-  </div>
-  
-  <div class="w-0 md:w-1/4 lg:w-1/5 h-0 md:h-screen overflow-y-hidden bg-white shadow-lg">
-    <div class="p-5 bg-white sticky top-0">
-      <img class="border border-indigo-100 shadow-lg round" src="http://lilithaengineering.co.za/wp-content/uploads/2017/08/person-placeholder.jpg">
-      <div class="pt-2 border-t mt-5 w-full text-center text-xl text-gray-600">
-        Some Person
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Post</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=base_url('logout')?>">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        
+    <?= $this->renderSection('content');?>     
       </div>
-    </div>
-    <div class="w-full h-screen antialiased flex flex-col hover:cursor-pointer">
-      <a class="hover:bg-gray-300 bg-gray-200 border-t-2 p-3 w-full text-xl text-left text-gray-600 font-semibold" href=""><i class="fa fa-user text-gray-600 text-2xl pr-1 pt-1 float-right"></i>Profile</a>
-      <a class="hover:bg-gray-300 bg-gray-200 border-t-2 p-3 w-full text-xl text-left text-gray-600 font-semibold" href=""><i class="fa fa-cog text-gray-600 text-2xl pr-1 pt-1 float-right"></i>Settings</a>
-      <a class="hover:bg-gray-300 bg-gray-200 border-t-2 p-3 w-full text-xl text-left text-gray-600 font-semibold" href="<?= base_url('logout')?>"><i class="fa fa-arrow-left text-gray-600 text-2xl pr-1 pt-1 float-right"></i>Log out</a>
-    </div>
-  </div>
-  
-  <!-- End Navbar -->
-  <?= $this->renderSection('content');?>
+		</div>
 
-
-
-</div>
-
-</div>
-</body>
+    <script src="../aset/js/jquery.min.js"></script>
+    <script src="../aset/js/popper.js"></script>
+    <script src="../aset/js/bootstrap.min.js"></script>
+    <script src="../aset/js/main.js"></script>
+  </body>
 </html>
+
