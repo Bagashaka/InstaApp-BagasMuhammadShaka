@@ -20,7 +20,15 @@ foreach ($postingan as $pos){
     </div>
     <div class="card-footer text-muted">
     <p class="card-text"><?=$pos['caption']?></p>
-      <p><?=$pos['created_at']?></p>
+      <p><?=$pos['created_at']?></p> 
+    <div class="btn-group">
+      <a href="<?=base_url('/pos/edit/'. $pos['postid'])?>" class="btn btn-secondary">Edit</a> 
+      <form action="<?= base_url('/pos/delete/'. $pos['postid']) ?>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+            <?= csrf_field() ?>
+        <button type="submit" class="btn btn-danger btn-sm mx-1">Delete</button>
+    </div>
+      </form>
     </div>
 </div>
 <br>

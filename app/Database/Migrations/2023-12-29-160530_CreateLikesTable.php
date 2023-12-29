@@ -29,6 +29,14 @@ class CreateLikesTable extends Migration
                 'type' => 'datetime',
                 'null' => true,
             ],
+            'updated_at' => [
+                'type'=>'DATETIME',
+                'null' => true,
+            ],
+            'deleted_at' => [
+                'type'=>'DATETIME',
+                'null' => true,
+            ],  
         ]);
 
         $this->forge->addPrimaryKey('id');

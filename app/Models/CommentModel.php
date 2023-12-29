@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
-
+use DateTime;
 
 class CommentModel extends Model 
 {
@@ -24,7 +24,7 @@ class CommentModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'user_id', 'post_id', 'comment', 'created_at'];
+    protected $allowedFields    = ['id', 'user_id', 'post_id', 'comment', 'created_at', 'updated_at' , 'deleted_at'];
 
     // Dates
     protected $useTimestamps = true;
