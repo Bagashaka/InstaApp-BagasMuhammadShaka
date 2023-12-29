@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use DateTime;
 
 class LikeModel extends Model
 {
@@ -20,7 +21,7 @@ class LikeModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'user_id', 'post_id', 'created_at'];
+    protected $allowedFields    = ['id', 'user_id', 'post_id', 'created_at',  'updated_at' , 'deleted_at'];
 
     // Dates
     protected $useTimestamps = true;
