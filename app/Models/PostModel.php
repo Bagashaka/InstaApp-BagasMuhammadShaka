@@ -6,17 +6,17 @@ use CodeIgniter\Model;
 use DateTime;
 class PostModel extends Model
 {
-
+ 
     public function getPostingan($id = null){
         if($id != null){
-            return $this->select('post.user_id, post.caption, post.image_url, post.created_at, users.*')
+            return $this->select('post.id as postid ,post.user_id, post.caption, post.image_url, post.created_at, users.*')
             ->join('users', 'users.id=post.user_id')
             ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
             ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
             ->find($id);
 
         }
-        return $this->select('post.user_id, post.caption, post.image_url, post.created_at, users.*')
+        return $this->select('post.id as postid ,post.user_id, post.caption, post.image_url, post.created_at, users.*')
         ->join('users', 'users.id=post.user_id')
         ->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
         ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
