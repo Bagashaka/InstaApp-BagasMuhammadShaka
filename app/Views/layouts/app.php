@@ -18,6 +18,9 @@
 	          <li>
 	              <a href="#">Profile</a>
 	          </li>
+            <li>
+	              <a href="#">Post</a>
+	          </li>
 	          <li>
 	              <a href="#">Setting</a>
 	          </li>

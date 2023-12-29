@@ -19,6 +19,5 @@
       2 days ago
     </div>
 </div>
-
 <?=$this->endSection()?>
 <?php endif; ?>
